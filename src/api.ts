@@ -5,7 +5,8 @@ const GITHUB_API = 'https://api.github.com';
 
 export async function getFollowing(username: string): Promise<GitHubUser[]> {
   try {
-    const response = await axios.get(`${GITHUB_API}/users/${username}/following?per_page=100`);
+    // const user = username.trim(); 
+    const response = await axios.get(`${GITHUB_API}/users/${username.trim()}/following?per_page=100`);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 404) {
